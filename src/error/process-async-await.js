@@ -1,4 +1,4 @@
-async function processElem(elem) {
+const processElem = async elem => {
   await new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log('processElem called for', elem);
@@ -10,7 +10,7 @@ async function processElem(elem) {
   });
 };
 
-async function processAsyncAwait(array) {
+const processAsyncAwait = async array => {
   const promises = array.map(elem => processElem(elem));
 
   await Promise.all(promises)
