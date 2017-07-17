@@ -2,6 +2,15 @@ const commandLineArgs = require('command-line-args')
 
 const { processCallback } = require('./process-callback');
 const { processAsyncLib } = require('./process-async-lib');
+const { processPromises } = require('./process-promises');
+const { processAsyncAwait } = require('./process-async-await');
+
+const methods = {
+  callback: processCallback,
+  asyncLib: processAsyncLib,
+  promises: processPromises,
+  asyncAwait: processAsyncAwait
+};
 
 const optionDefinitions = [ 
   { name: 'method', alias: 'm', type: String, defaultValue: 'callback' },
@@ -12,13 +21,6 @@ const options = commandLineArgs(optionDefinitions);
 
 console.log('starting with options', options);
 
-if (options.method === 'callback') {
-  options.list ? processCallback(options.list) : null;
+if (methods[options.method] && options.list) {
+  methods[options.method](options.list);
 }
-else if (options.method === 'asyncLib') {
-  options.list ? processAsyncLib(options.list) : null;
-}
-
-
-
-

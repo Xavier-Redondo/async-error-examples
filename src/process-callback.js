@@ -16,7 +16,7 @@ const iterateOver = (list, iterator, callback) => {
   }
 }
 
-const processElemCallback = (elem, callback) => {
+const processElem = (elem, callback) => {
   setTimeout(() => {
     console.log('processElem called for', elem);
     return callback();
@@ -27,7 +27,7 @@ const processElemCallback = (elem, callback) => {
 const processCallback = array => {
   console.log('starting processCallback with', array);
   iterateOver(array, (elem, callback) => {
-    processElemCallback(elem, () => callback());
+    processElem(elem, () => callback());
   }, () => {
     console.log('finished the process');
   });
