@@ -4,7 +4,8 @@
   "description": "example for async await",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "startp": "node src/main-promises.js"
   },
   "dependencies": {
     "async": "^2.5.0",
